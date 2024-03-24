@@ -2,12 +2,12 @@
 
 
 import 'package:dynamic_forms/hive_models.dart';
-import 'package:dynamic_forms/models.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class Data extends ChangeNotifier{
 
- final List<CompanyHive> _companyList = [
+ List<CompanyHive> _companyList = [
    CompanyHive(
     name: 'Main Company',
     city: 'New York',
@@ -41,5 +41,10 @@ class Data extends ChangeNotifier{
     notifyListeners();
   }
 
+initHive()async{
+  _companyList.clear();
+  Box<CompanyHive> _box = await Hive.openBox<CompanyHive>("companyBox");
+  _companyList = _box.values.toList();
+}
 
 }
