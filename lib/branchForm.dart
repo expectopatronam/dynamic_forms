@@ -1,3 +1,4 @@
+import 'package:dynamic_forms/hive_models.dart';
 import 'package:dynamic_forms/main.dart';
 import 'package:dynamic_forms/models.dart';
 import 'package:dynamic_forms/provider.dart';
@@ -44,6 +45,7 @@ class _BranchFormState extends State<BranchForm> {
   }
 
   removeForm() {
+    debugPrint('length is ${branchList.length}');
     setState(() {
     branchList.removeAt(widget.index);
     keyList.removeAt(widget.index);
@@ -115,7 +117,7 @@ clearForm();
                 return null;
               },
               onSaved: (value){
-                Branch branch = Branch(branchName: _branchNameController.text, branchCity: _branchCityController.text, branchCode: _branchCodeController.text);
+                BranchHive branch = BranchHive(branchName: _branchNameController.text, branchCity: _branchCityController.text, branchCode: _branchCodeController.text);
       provider.saveBranch(branch);
               },
             ),

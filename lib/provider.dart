@@ -1,42 +1,45 @@
 
 
 
+import 'package:dynamic_forms/hive_models.dart';
 import 'package:dynamic_forms/models.dart';
 import 'package:flutter/material.dart';
 
 class Data extends ChangeNotifier{
 
- final List<Company> _companyList = [
-   Company(
+ final List<CompanyHive> _companyList = [
+   CompanyHive(
     name: 'Main Company',
     city: 'New York',
     branches:[
-    Branch(
+    BranchHive(
       branchName: 'Branch 1',
       branchCity: 'New York',
       branchCode: 'NY001',
     ),
-    Branch(
+    BranchHive(
       branchName: 'Branch 2',
       branchCity: 'Los Angeles',
       branchCode: 'LA002',
     ),
-    Branch(
+    BranchHive(
       branchName: 'Branch 3',
       branchCity: 'Chicago',
       branchCode: 'CH003',
     ),
   ])];
 
-  List<Company> get companyList => _companyList;
+  List<CompanyHive> get companyList => _companyList;
 
-  saveCompany(Company company){
+  saveCompany(CompanyHive company){
     _companyList.add(company);
     notifyListeners();
   }
 
-  saveBranch(Branch branch){
+  saveBranch(BranchHive branch){
     _companyList.last.branches.add(branch);
     notifyListeners();
   }
+
+
 }

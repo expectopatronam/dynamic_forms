@@ -1,3 +1,4 @@
+import 'package:dynamic_forms/hive_models.dart';
 import 'package:dynamic_forms/models.dart';
 import 'package:dynamic_forms/provider.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _CompanyFormState extends State<CompanyForm> {
   Widget build(BuildContext context) {
    var provider = Provider.of<Data>(context);
     return Container(
-      padding:const EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.blue.shade100
@@ -67,7 +68,7 @@ class _CompanyFormState extends State<CompanyForm> {
                 return null;
               },
               onSaved: (value){
-                Company _company = Company(name: _nameController.text, city: _cityController.text, branches: []);
+                CompanyHive _company = CompanyHive(name: _nameController.text, city: _cityController.text, branches: []);
                 provider.saveCompany(_company);
               },
             ),
